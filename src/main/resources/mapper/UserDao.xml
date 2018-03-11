@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zju.courier.dao.UserDao">
+
+    <insert id="insertUser">
+        INSERT INTO user (username, passwd)
+        VALUES (#{username}, #{passwd});
+    </insert>
+
+    <select id="query" resultType="User">
+        <!-- 如何告诉MyBatis把结果映射到Appointment同时映射book属性 -->
+        <!-- 可以自由控制SQL -->
+        SELECT id,username,passwd
+        FROM user
+        WHERE
+        username = #{username}
+        AND passwd = #{passwd};
+    </select>
+    <select id="query2" resultType="java.util.Map">
+        SELECT *
+        FROM user
+        WHERE username = #{username}
+        AND passwd = #{passwd}
+    </select>
+
+</mapper>
