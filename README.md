@@ -13,4 +13,3 @@ jdbc.username=user
 jdbc.password=password
 ```
 `database`、`user`、`password`改为本地配置。
-test、test from fp
