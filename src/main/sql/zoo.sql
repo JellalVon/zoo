@@ -134,3 +134,15 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', 'admin');
+
+-- ----------------------------
+-- Table structure for `ap_load`
+-- ----------------------------
+DROP TABLE IF EXISTS `ap_num_sum`;
+CREATE TABLE `ap_num_sum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ap_id` int(11) NOT NULL,
+  `numbers` int(11) DEFAULT NULL,
+  `sum_date` DATE DEFAULT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
