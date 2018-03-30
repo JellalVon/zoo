@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.courier.dao.ApInfoDao">
+
+    <resultMap id="APInfoMap" type="APInfo">
+        <id column="ap_id" property="ap_id"/>
+        <result column="ap_name" property="ap_name"/>
+        <result column="mac" property="mac"/>
+        <result column="lat" property="lat"/>
+        <result column="lng" property="lng"/>
+        <result column="radius" property="radius"/>
+        <result column="addr" property="addr"/>
+        <result column="distance" property="distance"/>
+        <result column="max_num" property="max_num"/>
+    </resultMap>
+    <insert id="insert">
+        INSERT INTO
+          ap_info(ap_name, mac, lat, lng, radius, addr, distance, max_num)
+        VALUES
+            (#{apInfo.ap_name},#{apInfo.mac},#{apInfo.lat},#{apInfo.lng},
+             #{apInfo.radius},#{apInfo.addr},#{apInfo.distance},#{apInfo.max_num})
+    </insert>
+
+    <update id="update">
+        UPDATE ap_info SET
+            ap_name=#{apInfo.ap_name},
+            mac=#{apInfo.mac},
+            lat=#{apInfo.lat},
+            lng=#{apInfo.lng},
+            radius=#{apInfo.radius},
+            addr=#{apInfo.addr},
+            distance=#{apInfo.distance},
+            max_num=#{apInfo.max_num}
+        WHERE
+            ap_id = #{apInfo.ap_id}
+
+    </update>
+    <delete id="delete">
+        DELETE FROM ap_info
+        WHERE ap_id=#{ap_id}
+    </delete>
+
+    <select id="list" resultMap="APInfoMap">
+        SELECT * FROM ap_info;
+    </select>
+
+    <select id="query" resultMap="APInfoMap">
+        SELECT * FROM ap_info WHERE ap_id = #{ap_id};
+    </select>
+</mapper>

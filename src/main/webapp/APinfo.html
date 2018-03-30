@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APInfo</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="plugins/iCheck/all.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+</head>
+<body class="hold-transition skin-purple-light sidebar-mini">
+<div class="wrapper">
+
+    <div id="sidebar"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                AP 管理
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html"><i class="fa fa-dashboard"></i> 主页</a></li>
+                <li class="active">AP 管理</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <div class="col-md-10"><h3 class="box-title">AP 详细信息</h3></div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-instagram" data-toggle="modal" data-target="#addAP">添加AP</button>
+                            </div>
+
+                        </div>
+
+                        <div class="box-body" >
+                            <table id="apinfo" class="table table-bordered text-center">
+                                <thead id="test">
+                                <tr align="center">
+                                    <th >#</th>
+                                    <th align="center">AP名称</th>
+                                    <th>AP_MAC</th>
+                                    <th>纬度</th>
+                                    <th>经度</th>
+                                    <th>半径</th>
+                                    <th>位置信息</th>
+                                    <th>距离出口距离</th>
+                                    <th>最大负载</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="result">
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!--add Modal -->
+    <div class="modal fade" id="addAP" tabindex="-1" role="dialog" aria-labelledby="addAPLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addAPLabel">添加AP</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="apname" placeholder="AP名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="mac" placeholder="AP_MAC">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">纬度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lat" placeholder="纬度">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">经度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lng" placeholder="经度">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">半径</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="radius" placeholder="半径">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">位置信息</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="addr" placeholder="位置信息">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">距离出口距离</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="distance" placeholder="距离出口距离">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最大负载</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="max_num" placeholder="最大负载">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="addAP()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--edit Modal -->
+    <div class="modal fade" id="editAP" tabindex="-1" role="dialog" aria-labelledby="editAPLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="editAPLabel">修改AP</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group" hidden="hidden">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="apide">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="apnamee" placeholder="AP名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="mace" placeholder="AP_MAC">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">纬度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="late" placeholder="纬度">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">经度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lnge" placeholder="经度">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">半径</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="radiuse" placeholder="半径">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">位置信息</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="addre" placeholder="位置信息">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">距离出口距离</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="distancee" placeholder="距离出口距离">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最大负载</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="max_nume" placeholder="最大负载">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="editAp()">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--delete Modal -->
+    <div class="modal fade" id="deleteAP" tabindex="-1" role="dialog" aria-labelledby="deleteAPLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="deleteAPLabel">删除AP</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group" hidden="hidden">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="apidd" hidden="hidden">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="apnamed" placeholder="AP名称" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="macd" placeholder="AP_MAC" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">纬度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="latd" placeholder="纬度" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">经度</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lngd" placeholder="经度" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">半径</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="radiusd" placeholder="半径" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">位置信息</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="addrd" placeholder="位置信息" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">距离出口距离</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="distanced" placeholder="距离出口距离" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最大负载</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="max_numd" placeholder="最大负载" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >取消</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteAP()">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- jQuery 3 -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+
+    <script src="js/APinfo.js"></script>
+</body>
+</html>

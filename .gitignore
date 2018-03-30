@@ -8,12 +8,14 @@ build/
 .settings/
 libs/
 .idea
+.project
 out
 src/main/resources/jdbc.properties
 ### Eclipse template
 
 .metadata
 tmp/
+*.iml
 *.tmp
 *.bak
 *.swp

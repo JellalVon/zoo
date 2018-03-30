@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.courier.dao.RankDao">
+    <resultMap id="RankMap" type="Rank">
+        <id column="id" property="id"/>
+        <result column="ap_id" property="ap_id"/>
+        <result column="num_pre" property="num_pre"/>
+        <result column="times_pre" property="times_pre"/>
+        <result column="total_time" property="total_time"/>
+        <result column="avg_time" property="avg_time"/>
+        <result column="release_date" property="release_date"/>
+    </resultMap>
+
+    <select id="query" resultMap="RankMap">
+        SELECT * FROM ranks
+        <where>
+            ap_id IN
+            <foreach collection="ap_ids" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            <if test="start != null and start != ''">
+                <![CDATA[
+                AND release_date >= #{start}
+            ]]>
+            </if>
+            <if test="end != null and end != ''">
+                <![CDATA[
+                AND release_date <= #{end}
+            ]]>
+            </if>
+        </where>
+    </select>
+</mapper>
