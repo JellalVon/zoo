@@ -30,4 +30,21 @@
             </if>
         </where>
     </select>
+
+    <select id="queryOne" resultMap="RankMap">
+        SELECT * FROM ranks
+        <where>
+            ap_id = #{ap_id}
+            <if test="start != null and start != ''">
+                <![CDATA[
+                AND release_date >= #{start}
+            ]]>
+            </if>
+            <if test="end != null and end != ''">
+                <![CDATA[
+                AND release_date <= #{end}
+            ]]>
+            </if>
+        </where>
+    </select>
 </mapper>

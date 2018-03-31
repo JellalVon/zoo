@@ -18,4 +18,9 @@ public class RankServiceImpl implements RankService {
     public List<Rank> query(List<String> apids, String start, String end) {
         return rankDao.query(apids, start, end);
     }
+
+    @Override
+    public List<Rank> queryOne(String apid, String start, String end) {
+        return rankDao.queryOne(apid, start, end);
+    }
 }

@@ -29,4 +29,14 @@ public class RankController {
         List<String> list = Arrays.asList(s.split(","));
         return rankService.query(list, start, end);
     }
+
+    @RequestMapping("/queryOne")
+    public @ResponseBody
+    List<Rank> queryOne(@RequestBody Map<Object, String> map) {
+        String start = map.get("start");
+        String end = map.get("end");
+        String apId = map.get("ap_id");
+        System.out.println(rankService.queryOne(apId, start, end));
+        return rankService.queryOne(apId, start, end);
+    }
 }

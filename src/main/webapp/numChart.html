@@ -51,7 +51,7 @@
                 <div class="col-md-12 box-body">
                     <div class="col-sm-3 form-group">
                         <label for="ap_id" class="control-label">选择AP</label>
-                            <select class="form-control select2" multiple="multiple" id="ap_id">
+                            <select class="form-control select2" id="ap_id">
                             </select>
                     </div>
                     <div class="col-sm-4 form-group">
@@ -76,9 +76,42 @@
 
                         </div>
                     </div>
-<!--                    <div class="col-md-2">
-                        <button type="button" class="btn btn-instagram" >查询</button>
-                    </div>-->
+                </div>
+
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">总人数及总停留时间</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <div id="numAndTotal" style="width:450px; height:50%; margin: auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">总人次及平均停留时间</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <div id="timesAndAvg" style="width:450px; height:50%; margin: auto"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -117,9 +150,9 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
+<script src="js/echarts.js"></script>
 <script src="js/numChart.js"></script>
-<script>
+<!--<script>
     $(function () {
         //Initialize Select2 Elements
         $('.select2').select2()
@@ -137,6 +170,6 @@
             autoclose: true
         });
     });
-</script>
+</script>-->
 </body>
 </html>
