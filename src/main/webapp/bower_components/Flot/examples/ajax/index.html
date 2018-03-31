@@ -83,7 +83,7 @@
 
 				function onDataReceived(series) {
 
-					// Load all the data in one pass; if we only got partial
+					// LoadDao all the data in one pass; if we only got partial
 					// data we could merge it with what we already have.
 
 					data = [ series ];
@@ -112,7 +112,7 @@
 			setTimeout(fetchData, 1000);
 		});
 
-		// Load the first series by default, so we don't have an empty plot
+		// LoadDao the first series by default, so we don't have an empty plot
 
 		$("button.fetchSeries:first").click();
 

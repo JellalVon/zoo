@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.courier.dao.LoadDao">
+    <resultMap id="LoadMap" type="LoadForMap">
+        <result column="numbers" property="count"/>
+    </resultMap>
+    
+    <select id="list" resultMap="LoadMap">
+        SELECT ap_info.lng,ap_info.lat,ap_load.numbers FROM ap_load,ap_info
+        WHERE ap_load.ap_id = ap_info.ap_id;
+    </select>
+
+
+</mapper>
