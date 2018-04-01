@@ -1,4 +1,4 @@
-package com.zju.courier.entity;
+package com.zju.courier.pojo;
 
 public class LoadForMap {
     private float lat;

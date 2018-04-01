@@ -1,6 +1,6 @@
 package com.zju.courier.dao;
 
-import com.zju.courier.entity.LoadForMap;
+import com.zju.courier.pojo.LoadForMap;
 
 import java.util.List;
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.courier.dao.StaffDao">
+
+    <resultMap id="staffMap" type="Staff">
+        <result column="staff_mac" property="staff_mac"/>
+        <result column="ap_id" property="ap_id"/>
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO
+        staff(staff_mac, ap_id, name, sex, tel, birth, title)
+        VALUES
+            (#{staff.staff_mac},#{staff.ap_id},#{staff.name},#{staff.sex},
+             #{staff.tel},#{staff.birth},#{staff.title})
+    </insert>
+
+    <update id="update">
+        UPDATE staff SET
+            staff_mac = #{staff.staff_mac},
+            ap_id = #{staff.ap_id},
+            name =#{staff.name},
+            sex =#{staff.sex},
+            tel =#{staff.tel},
+            birth =#{staff.birth},
+            title = #{staff.title}
+        WHERE
+            id = #{staff.id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM staff
+        WHERE id = #{id}
+    </delete>
+
+    <select id="list" resultMap="staffMap">
+        SELECT * FROM staff
+    </select>
+
+    <select id="query" resultMap="staffMap">
+        SELECT * FROM staff WHERE id = #{id}
+    </select>
+</mapper>

@@ -57,13 +57,13 @@ function doSearch() {
                 timesData.push(data[i].times_pre);
                 avgData.push(data[i].avg_time);
             }
-            var numAndTotalContainer = document.getElementById('numAndTotal');
-            var resizeNumAndTotalContainer = function () {
-                numAndTotalContainer.style.width = window.innerWidth*0.82 +'px';
-                numAndTotalContainer.style.height = window.innerHeight*0.9 +'px';
+            var numAndAvgContainer = document.getElementById('numAndAvg');
+            var resizeNumAndAvgContainer = function () {
+                numAndAvgContainer.style.width = window.innerWidth*0.82 +'px';
+                numAndAvgContainer.style.height = window.innerHeight*0.9 +'px';
             };
-            resizeNumAndTotalContainer();
-            var myChartF = echarts.init(numAndTotalContainer);
+            resizeNumAndAvgContainer();
+            var myChartF = echarts.init(numAndAvgContainer);
             var optionF = {
                 color: ['#16abfe','#ff7070'],
                 tooltip: {
@@ -76,7 +76,7 @@ function doSearch() {
                     }
                 },
                 legend: {
-                    data: ['人数', '停留总时间']
+                    data: ['人数', '平均停留时间']
                 },
                 xAxis: [{
                     type: 'category',
@@ -95,7 +95,7 @@ function doSearch() {
                         }
                     }, {
                         type: 'value',
-                        name: '停留总时间',
+                        name: '平均停留时间',
                         axisLabel: {
                             formatter: '{value} min'
                         }
@@ -109,23 +109,23 @@ function doSearch() {
                 },
 
                     {
-                        name: '停留总时间',
+                        name: '平均停留时间',
                         type: 'line',
                         yAxisIndex: 1,
                         smooth: true,
-                        data: totalData
+                        data: avgData
                     }
                 ]
             };
             myChartF.setOption(optionF);
 
-            var timesAndAvgContainer = document.getElementById('timesAndAvg');
-            var resizeTimesAndAvgContainer = function () {
-                timesAndAvgContainer.style.width = window.innerWidth*0.82 +'px';
-                timesAndAvgContainer.style.height = window.innerHeight*0.9 +'px';
+            var timesAndTotalContainer = document.getElementById('timesAndTotal');
+            var resizeTimesAndTotalContainer = function () {
+                timesAndTotalContainer.style.width = window.innerWidth*0.82 +'px';
+                timesAndTotalContainer.style.height = window.innerHeight*0.9 +'px';
             };
-            resizeTimesAndAvgContainer();
-            var myChartS = echarts.init(timesAndAvgContainer);
+            resizeTimesAndTotalContainer();
+            var myChartS = echarts.init(timesAndTotalContainer);
             var optionS = {
                 color: ['#16abfe','#ff7070'],
                 tooltip: {
@@ -138,7 +138,7 @@ function doSearch() {
                     }
                 },
                 legend: {
-                    data: ['人次', '平均停留时间']
+                    data: ['人次', '停留总时间']
                 },
                 xAxis: [{
                     type: 'category',
@@ -157,7 +157,7 @@ function doSearch() {
                         }
                     }, {
                         type: 'value',
-                        name: '平均停留时间',
+                        name: '停留总时间',
                         axisLabel: {
                             formatter: '{value} min'
                         }
@@ -171,11 +171,11 @@ function doSearch() {
                 },
 
                     {
-                        name: '平均停留时间',
+                        name: '停留总时间',
                         type: 'line',
                         yAxisIndex: 1,
                         smooth: true,
-                        data: avgData
+                        data: totalData
                     }
                 ]
             };

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>APInfo</title>
+    <title>Staff</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -38,11 +38,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                AP 管理
+                工作人员 管理
             </h1>
             <ol class="breadcrumb">
                 <li><a href="Load.html"><i class="fa fa-dashboard"></i> 主页</a></li>
-                <li class="active">AP 管理</li>
+                <li class="active">工作人员 管理</li>
             </ol>
         </section>
 
@@ -54,30 +54,28 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <div class="col-md-10"><h3 class="box-title">AP 详细信息</h3></div>
+                            <div class="col-md-10"><h3 class="box-title">工作人员 详细信息</h3></div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-instagram" data-toggle="modal" data-target="#addAP">添加AP</button>
+                                <button type="button" class="btn btn-instagram" data-toggle="modal" data-target="#addStaff">添加工作人员</button>
                             </div>
 
                         </div>
 
                         <div class="box-body" >
-                            <table id="apinfo" class="table table-bordered text-center">
-                                <thead id="test">
+                            <table id="staff" class="table table-bordered text-center">
+                                <thead>
                                 <tr align="center">
                                     <th >#</th>
-                                    <th align="center">AP名称</th>
-                                    <th>AP_MAC</th>
-                                    <th>纬度</th>
-                                    <th>经度</th>
-                                    <th>半径</th>
-                                    <th>位置信息</th>
-                                    <th>距离出口距离</th>
-                                    <th>最大负载</th>
+                                    <th>姓名</th>
+                                    <th>职称</th>
+                                    <th>性别</th>
+                                    <th>手机号</th>
+                                    <th>出生日期</th>
+                                    <th>MAC</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
-                                <tbody id="result">
+                                <tbody id="staffList">
                                 </tbody>
                             </table>
                         </div>
@@ -94,62 +92,50 @@
     </div>
     <!-- /.content-wrapper -->
     <!--add Modal -->
-    <div class="modal fade" id="addAP" tabindex="-1" role="dialog" aria-labelledby="addAPLabel">
+    <div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-labelledby="addStaffLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="addAPLabel">添加AP</h4>
+                    <h4 class="modal-title" id="addStaffLabel">添加工作人员</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP名称</label>
+                                <label class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apname" placeholder="AP名称">
+                                    <input type="text" class="form-control" id="name" placeholder="姓名">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <label class="col-sm-2 control-label">职称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="mac" placeholder="AP_MAC">
+                                    <input type="text" class="form-control" id="title" placeholder="职称">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">纬度</label>
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="lat" placeholder="纬度">
+                                    <input type="text" class="form-control" id="sex" placeholder="性别">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">经度</label>
+                                <label class="col-sm-2 control-label">手机号</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="lng" placeholder="经度">
+                                    <input type="text" class="form-control" id="tel" placeholder="手机号">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">半径</label>
+                                <label class="col-sm-2 control-label">出生日期</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="radius" placeholder="半径">
+                                    <input type="text" class="form-control pull-right" id="birth" placeholder="出生日期">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">位置信息</label>
+                                <label class="col-sm-2 control-label">MAC</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="addr" placeholder="位置信息">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">距离出口距离</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="distance" placeholder="距离出口距离">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">最大负载</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="max_num" placeholder="最大负载">
+                                    <input type="text" class="form-control" id="mac" placeholder="MAC">
                                 </div>
                             </div>
 
@@ -158,19 +144,19 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" onclick="addAP()">添加</button>
+                    <button type="button" class="btn btn-primary" onclick="addStaff()">添加</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!--edit Modal -->
-    <div class="modal fade" id="editAP" tabindex="-1" role="dialog" aria-labelledby="editAPLabel">
+    <div class="modal fade" id="editStaff" tabindex="-1" role="dialog" aria-labelledby="editAPLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="editAPLabel">修改AP</h4>
+                    <h4 class="modal-title" id="editAPLabel">修改工作人员信息</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
@@ -178,55 +164,43 @@
                             <div class="form-group" hidden="hidden">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apide">
+                                    <input type="text" class="form-control" id="ide">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP名称</label>
+                                <label class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apnamee" placeholder="AP名称">
+                                    <input type="text" class="form-control" id="namee" placeholder="姓名">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <label class="col-sm-2 control-label">职称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="mace" placeholder="AP_MAC">
+                                    <input type="text" class="form-control" id="titlee" placeholder="职称">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">纬度</label>
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="late" placeholder="纬度">
+                                    <input type="text" class="form-control" id="sexe" placeholder="性别">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">经度</label>
+                                <label class="col-sm-2 control-label">手机号</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="lnge" placeholder="经度">
+                                    <input type="text" class="form-control" id="tele" placeholder="手机号">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">半径</label>
+                                <label class="col-sm-2 control-label">出生日期</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="radiuse" placeholder="半径">
+                                    <input type="text" class="form-control pull-right" id="birthe" placeholder="出生日期">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">位置信息</label>
+                                <label class="col-sm-2 control-label">MAC</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="addre" placeholder="位置信息">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">距离出口距离</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="distancee" placeholder="距离出口距离">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">最大负载</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="max_nume" placeholder="最大负载">
+                                    <input type="text" class="form-control" id="mace" placeholder="MAC">
                                 </div>
                             </div>
 
@@ -235,19 +209,19 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" onclick="editAp()">修改</button>
+                    <button type="button" class="btn btn-primary" onclick="editStaff()">修改</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!--delete Modal -->
-    <div class="modal fade" id="deleteAP" tabindex="-1" role="dialog" aria-labelledby="deleteAPLabel">
+    <div class="modal fade" id="deleteStaff" tabindex="-1" role="dialog" aria-labelledby="deleteAPLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="deleteAPLabel">删除AP</h4>
+                    <h4 class="modal-title" id="deleteAPLabel">删除工作人员</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
@@ -255,55 +229,43 @@
                             <div class="form-group" hidden="hidden">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apidd" hidden="hidden">
+                                    <input type="text" class="form-control" id="idd" hidden="hidden">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP名称</label>
+                                <label class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apnamed" placeholder="AP名称" disabled>
+                                    <input type="text" class="form-control" id="named" placeholder="姓名" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">AP_MAC</label>
+                                <label class="col-sm-2 control-label">职称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="macd" placeholder="AP_MAC" disabled>
+                                    <input type="text" class="form-control" id="titled" placeholder="职称" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">纬度</label>
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="latd" placeholder="纬度" disabled>
+                                    <input type="text" class="form-control" id="sexd" placeholder="性别" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">经度</label>
+                                <label class="col-sm-2 control-label">手机号</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="lngd" placeholder="经度" disabled>
+                                    <input type="text" class="form-control" id="teld" placeholder="手机号" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">半径</label>
+                                <label class="col-sm-2 control-label">出生日期</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="radiusd" placeholder="半径" disabled>
+                                    <input type="text" class="form-control pull-right" id="birthd" placeholder="出生日期" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">位置信息</label>
+                                <label class="col-sm-2 control-label">MAC</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="addrd" placeholder="位置信息" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">距离出口距离</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="distanced" placeholder="距离出口距离" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">最大负载</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="max_numd" placeholder="最大负载" disabled>
+                                    <input type="text" class="form-control" id="macd" placeholder="MAC" disabled>
                                 </div>
                             </div>
 
@@ -312,28 +274,38 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" >取消</button>
-                    <button type="button" class="btn btn-primary" onclick="deleteAP()">删除</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteStaff()">删除</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <!-- jQuery 3 -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- date-range-picker -->
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
 
-    <script src="js/APinfo.js"></script>
+<!-- bootstrap color picker -->
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="js/staff.js"></script>
 </body>
 </html>
