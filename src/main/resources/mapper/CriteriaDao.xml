@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zju.courier.dao.CriteriaDao">
+
+    <resultMap id="BaseMao" type="Criteria">
+        <id column="criteria_id" property="criteria_id"/>
+        <result column="num_pre" property="num_pre"/>
+        <result column="times_pre" property="times_pre"/>
+        <result column="avg_time" property="avg_time"/>
+        <result column="total_time" property="total_time"/>
+        <result column="release_date" property="release_date"/>
+    </resultMap>
+
+    <select id="query" resultMap="BaseMao">
+        SELECT * FROM criteria WHERE criteria_id = #{criteria_id}
+    </select>
+</mapper>

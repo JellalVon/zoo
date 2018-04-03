@@ -10,6 +10,15 @@ public class APInfo {
     private String addr;
     private int distance;
     private int max_num;
+    private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public void setAll(int ap_id, String ap_name, String mac, float lat, float lng,
                        float radius, String addr, int distance, int max_num) {

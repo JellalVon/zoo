@@ -27,7 +27,7 @@ $(function () {
     map.plugin(["AMap.Heatmap"], function() {
         //初始化heatmap对象
         heatmap = new AMap.Heatmap(map, {
-            radius: 100, //给定半径
+            radius: 50, //给定半径
             opacity: [0, 0.8]
             ,gradient:{
                 0.5: '#1f4dff',
@@ -54,7 +54,7 @@ $(function () {
             success: function (data) {
                 heatmap.setDataSet({
                     data : data,
-                    max : 50
+                    max : 100
                 })
             }
         });

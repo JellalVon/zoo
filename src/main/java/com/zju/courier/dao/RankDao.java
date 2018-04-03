@@ -11,4 +11,6 @@ public interface RankDao {
 
     List<Rank> queryOne(@Param("ap_id") String ap_id,
                   @Param("start") String start, @Param("end") String end);
+
+    List<Rank> queryByMonth(@Param("year") String year,@Param("month") String month);
 }

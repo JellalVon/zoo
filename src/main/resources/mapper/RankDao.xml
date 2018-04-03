@@ -47,4 +47,8 @@
             </if>
         </where>
     </select>
+
+    <select id="queryByMonth" resultMap="RankMap">
+        SELECT * FROM ranks WHERE YEAR(release_date) = #{year} ANd MONTH(release_date) = #{month}
+    </select>
 </mapper>
