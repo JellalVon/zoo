@@ -20,13 +20,16 @@ $(function () {
         language:"zh-CN",
         format: 'yyyy-mm-dd',
         autoclose: true,
-        startDate: new Date("2013-01-01")
+        startDate: new Date("2013-01-01"),
+        endDate : new Date()
     });
     //Date picker
     $('#end').datepicker({
         language:"zh-CN",
         format: 'yyyy-mm-dd',
-        autoclose: true
+        autoclose: true,
+        startDate: new Date("2013-01-01"),
+        endDate : new Date()
     });
 });
 

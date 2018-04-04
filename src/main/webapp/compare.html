@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>numbers chart</title>
+    <title>compare</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -50,9 +49,9 @@
             <div class="row">
                 <div class="col-md-12 box-body">
                     <div class="col-sm-3 form-group">
-                        <label for="ap_id" class="control-label">选择AP</label>
-                            <select class="form-control select2" id="ap_id">
-                            </select>
+                        <label for="ap_ids" class="control-label">选择AP</label>
+                        <select class="form-control select2" id="ap_ids" multiple="multiple">
+                        </select>
                     </div>
                     <div class="col-sm-4 form-group">
                         <label for="start">开始日期</label>
@@ -78,10 +77,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">总人数及平均停留时间</h3>
+                            <h3 class="box-title">总人数</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -91,33 +90,75 @@
                         </div>
                         <div class="box-body">
                             <div class="chart">
-                                <div id="numAndAvg" style="width:450px; height:50%; margin: auto"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">总人次及停留总时间</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="box-body">
-                            <div class="chart">
-                                <div id="timesAndTotal" style="width:450px; height:50%; margin: auto"></div>
+                                <div id="num" style="width:450px; height:50%; margin: auto"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">人均停留时间</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <div id="avg" style="width:450px; height:50%; margin: auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">总人次</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <div id="times" style="width:450px; height:50%; margin: auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">总停留时间</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <div id="total" style="width:450px; height:50%; margin: auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </section>
     </div>
 </div>
+
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -151,25 +192,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="js/echarts.js"></script>
-<script src="js/numChart.js"></script>
-<!--<script>
-    $(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-        //Date picker
-        $('#start').datepicker({
-            language:"zh-CN",
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            startDate: new Date("2013-01-01")
-        });
-        //Date picker
-        $('#end').datepicker({
-            language:"zh-CN",
-            format: 'yyyy-mm-dd',
-            autoclose: true
-        });
-    });
-</script>-->
+<script src="js/compare.js"></script>
 </body>
 </html>

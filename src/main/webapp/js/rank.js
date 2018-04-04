@@ -55,7 +55,6 @@ $(function () {
                     "<li> <span >平均每天人数</span> <strong>"+Math.round(data[i].num/data[i].days)+"&nbsp;人</strong> </li>"+
                     "<li> <span >平均每天人次</span> <strong>"+Math.round(data[i].times/data[i].days)+"&nbsp;人</strong> </li>"+
                     "<li> <span >平均每天停留总时间</span> <strong>"+Math.round(data[i].total/data[i].days)+"&nbsp;分钟</strong> </li>"+
-                    "<li> <span >平均每天人均停留时间</span> <strong>"+Math.round(data[i].avg/data[i].days)+"&nbsp;分钟</strong> </li>"+
                     "</ul>"+
                     "</div> </div> </li>"
                 );
@@ -197,7 +196,6 @@ function monthSearch() {
                     "<li> <span >平均每天人数</span> <strong>"+Math.round(data[i].num/data[i].days)+"&nbsp;人</strong> </li>"+
                     "<li> <span >平均每天人次</span> <strong>"+Math.round(data[i].times/data[i].days)+"&nbsp;人</strong> </li>"+
                     "<li> <span >平均每天停留总时间</span> <strong>"+Math.round(data[i].total/data[i].days)+"&nbsp;分钟</strong> </li>"+
-                    "<li> <span >平均每天人均停留时间</span> <strong>"+Math.round(data[i].avg/data[i].days)+"&nbsp;分钟</strong> </li>"+
                     "</ul>"+
                     "</div> </div> </li>"
                 );

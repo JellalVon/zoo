@@ -11,8 +11,14 @@
         <result column="release_date" property="release_date"/>
     </resultMap>
 
-    <select id="query" resultMap="RankMap">
-        SELECT * FROM ranks
+    <resultMap id="SumMap" type="com.zju.courier.pojo.SumByDate">
+        <result column="ap_id" property="apId"/>
+    </resultMap>
+
+    <select id="query" resultMap="SumMap">
+        SELECT ap_id,SUM(num_pre) AS num,
+        SUM(times_pre) AS times,SUM(total_time) AS total
+        FROM ranks
         <where>
             ap_id IN
             <foreach collection="ap_ids" item="item" index="index" open="(" separator="," close=")">
@@ -29,6 +35,7 @@
             ]]>
             </if>
         </where>
+        GROUP BY ap_id
     </select>
 
     <select id="queryOne" resultMap="RankMap">

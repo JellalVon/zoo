@@ -48,15 +48,17 @@ public class MonthRankServiceImpl implements MonthRankService {
             score.setNum(score.getNum() + rank.getNum_pre());
             score.setTimes(score.getTimes() + rank.getTimes_pre());
             score.setTotal(score.getTotal() + rank.getTotal_time());
-            score.setAvg(score.getAvg() + rank.getAvg_time());
             score.setDays(score.getDays() + 1);
+        }
+        for (Score score : map.values()) {
+            score.setAvg(score.getTotal()/score.getNum());
         }
         Criteria criteria = criteriaDao.query(1);
         int days = map.get(1).getDays();
         float MAX_NUM = criteria.getNum_pre() * days;
         float MAX_TIMES = criteria.getTimes_pre() * days;
         float MAX_TOTAL = criteria.getTotal_time() * days;
-        float MAX_AVG = criteria.getAvg_time() * days;
+        float MAX_AVG = MAX_TOTAL/MAX_NUM;
         float MAX_DIS = criteria.getDistance();
         for (Score score : map.values()) {
             float num = (score.getNum() > MAX_NUM ? 1f : score.getNum() / MAX_NUM) * NUM;

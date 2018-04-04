@@ -2,6 +2,7 @@ package com.zju.courier.web;
 
 import com.zju.courier.entity.Rank;
 import com.zju.courier.pojo.Score;
+import com.zju.courier.pojo.SumByDate;
 import com.zju.courier.service.MonthRankService;
 import com.zju.courier.service.RankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,7 @@ public class RankController {
 
     @RequestMapping("/query")
     public @ResponseBody
-    List<Rank> query(@RequestBody Map<Object, String> map) {
+    List<SumByDate> query(@RequestBody Map<Object, String> map) {
         String start = map.get("start");
         String end = map.get("end");
         String s = map.get("ap_ids");
