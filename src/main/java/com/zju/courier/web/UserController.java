@@ -21,8 +21,9 @@ public class UserController {
 
     @RequestMapping(value = "/login")
     public @ResponseBody
-    User query(@RequestBody User user) {
-        return userService.query(user.getUsername(), user.getPasswd());
+    Boolean query(@RequestBody User user) {
+        System.out.println(user);
+        return userService.query(user.getUsername(), user.getPasswd()) != null;
     }
 
     @RequestMapping(value = "/register")
