@@ -1,6 +1,7 @@
 package com.zju.courier.dao;
 
 import com.zju.courier.entity.Staff;
+import com.zju.courier.pojo.StaffPosition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface StaffDao {
     void insert(@Param("staff") Staff staff);
 
     void delete(int id);
+
+    List<StaffPosition> load();
 }

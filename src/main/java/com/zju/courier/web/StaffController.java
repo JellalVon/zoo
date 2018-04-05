@@ -1,6 +1,7 @@
 package com.zju.courier.web;
 
 import com.zju.courier.entity.Staff;
+import com.zju.courier.pojo.StaffPosition;
 import com.zju.courier.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,12 @@ public class StaffController {
 
     @Autowired
     private StaffService staffService;
+
+    @RequestMapping("/load")
+    public @ResponseBody
+    List<StaffPosition> load() {
+        return staffService.load();
+    }
 
     @RequestMapping("/list")
     public @ResponseBody

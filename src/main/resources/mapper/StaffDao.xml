@@ -7,6 +7,10 @@
         <result column="ap_id" property="ap_id"/>
     </resultMap>
 
+    <resultMap id="StaffPositionMap" type="com.zju.courier.pojo.StaffPosition">
+        <result column="ap_name" property="apName"/>
+    </resultMap>
+
     <insert id="insert">
         INSERT INTO
         staff(staff_mac, ap_id, name, sex, tel, birth, title)
@@ -39,5 +43,11 @@
 
     <select id="query" resultMap="staffMap">
         SELECT * FROM staff WHERE id = #{id}
+    </select>
+
+    <select id="load" resultMap="StaffPositionMap">
+        SELECT * FROM ap_info,staff
+        WHERE staff.ap_id = ap_info.ap_id
+        AND staff.ap_id IS NOT NULL
     </select>
 </mapper>

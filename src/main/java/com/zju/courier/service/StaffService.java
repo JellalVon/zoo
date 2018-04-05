@@ -1,6 +1,7 @@
 package com.zju.courier.service;
 
 import com.zju.courier.entity.Staff;
+import com.zju.courier.pojo.StaffPosition;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface StaffService {
     void insert(Staff staff);
 
     void delete(int id);
+
+    List<StaffPosition> load();
 }

@@ -3,8 +3,8 @@ $(function () {
     /*--------------------gaode map-----------------*/
     var map = new AMap.Map("map", {
         resizeEnable: true,
-        center: [116.397428, 39.90923],
-        zoom: 11
+        center: [121.674396,29.803857],
+        zoom: 16,
     });
     if (!isSupportCanvas()) {
         alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
@@ -43,6 +43,7 @@ $(function () {
             max: 100
         });*/
     });
+    var adminData = [];
     load();
     function load() {
         $.ajax({
@@ -52,10 +53,42 @@ $(function () {
             datatype: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                var sumData = 0;
+                for (var i in data) {
+                    sumData += data[i].count;
+                }
+                $('#sumData').text(sumData);
                 heatmap.setDataSet({
                     data : data,
                     max : 100
-                })
+                });
+                function sortNumber(a,b){
+                    return b.count - a.count;
+                }
+                data = data.sort(sortNumber);
+                $('#hot').text(data[0].count)
+            }
+        });
+        $.ajax({
+            type: "post",
+            url: "/staff/load",
+            async: false,
+            datatype: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                adminData = [];
+                var adminSum = data.length;
+                $('#adminSum').text(adminSum);
+                for (var i in data) {
+                    adminData.push({
+                        position: [data[i].lng,data[i].lat],
+                        infoWinContent : data[i].apName,
+                        tel: data[i].tel,
+                        markerLabel: data[i].name,
+                        id : data[i].name,
+                        title: data[i].title
+                    })
+                }
             }
         });
     }
@@ -112,7 +145,7 @@ $(function () {
             //返回数据项对应的infoWindow
             getInfoWindow: function(dataItem, context, recycledInfoWindow) {
 
-                var tpl = '<p>警卫<%- dataItem.id %>：<%- dataItem.infoWinContent %><p>';
+                var tpl = '<p><%- dataItem.title %>-<%- dataItem.id %>：<%- dataItem.infoWinContent %><p>';
 
                 //MarkerList.utils.template支持underscore语法的模板
                 var content = MarkerList.utils.template(tpl, {
@@ -188,40 +221,10 @@ $(function () {
             //console.log(event, record);
         });
 
-        //构建一个数据项数组，数据项本身没有格式要求，但需要支持getDataId和getPosition
-        var data = [{
-            id: 'A',
-            position: [121.674396,29.803857],
-            markerLabel: 'G_A',
-            infoWinContent: '园区中心',
-            listDesc: '警卫 A',
-            name:'警卫*****A',
-            tel:'13858687899'
-        }, {
-            id: 'B',
-            position: [121.677239,29.8032],
-            markerLabel: 'G_B',
-            infoWinContent: '梅花苑',
-            listDesc: '警卫 B',
-            tel:'13845657566'
-        }, {
-            id: 'C',
-            position: [121.67602,29.800179],
-            markerLabel: 'G_C',
-            infoWinContent: '非洲三色犬',
-            listDesc: '警卫 C',
-            tel:'13856467686'
-        }, {
-            id: 'D',
-            position: [121.676406,29.798484],
-            markerLabel: 'G_D',
-            infoWinContent: '西南门',
-            listDesc: '警卫 D',
-            tel:'13845758462'
-        }];
-
         //展示该数据
-        markerList.render(data);
+        markerList.render(adminData);
+
+        map.setZoomAndCenter(16, [121.674396,29.803857]);
     });
 
 });
