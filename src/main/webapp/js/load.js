@@ -91,6 +91,67 @@ $(function () {
                 }
             }
         });
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: 'http://api.k780.com/?app=weather.future&weaid=ningbo&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=data',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'data',
+            success: function (data) {
+                console.log(data);
+                $('#temperature').text(data.result[0].temperature);
+                $('#weather').text(data.result[0].weather);
+                var weatid = data.result[0].weatid;
+                switch (weatid) {
+                    case '1':
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-sunny');
+                        break;
+                    case '2':
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-partlysunny');
+                        break;
+                    case '3':
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-cloudy');
+                        break;
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '8':
+                    case '9':
+                    case '10':
+                    case '11':
+                    case '12':
+                    case '13':
+                    case '20':
+                    case '22':
+                    case '23':
+                    case '24':
+                    case '25':
+                    case '26':
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-rainy');
+                        break;
+                    case '7':
+                    case '14':
+                    case '15':
+                    case '16':
+                    case '17':
+                    case '18':
+                    case '27':
+                    case '28':
+                    case '29':
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-snowy');
+                        break;
+                    default:
+                        $('#weaimg').removeClass();
+                        $('#weaimg').addClass('ion ion-ios-cloudy');
+                }
+            }
+        });
     }
     setInterval(load,60000);
     //判断浏览区是否支持canvas
@@ -226,5 +287,7 @@ $(function () {
 
         map.setZoomAndCenter(16, [121.674396,29.803857]);
     });
+
+
 
 });
